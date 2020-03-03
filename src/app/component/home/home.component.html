@@ -1,0 +1,83 @@
+<ul class="diamond__container"  *ngIf="!isLoading else loading">
+   <li>
+      <a title="Mantis homepage" class="diamond__item" href="https://epsi-tma.mantishub.io" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>Mantis</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--1"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Github homepage" class="diamond__item" href="https://github.com/Maxouize/TMAPORTAIL" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>GITHUB</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--2"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Jenkins homepage" class="diamond__item" href="http://localhost:8080/job/TP_InteContinue/" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>JENKINS</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--3"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Slack homepage" class="diamond__item" href="https://app.slack.com/client/TT53YRSLC/CSSPK7TPC" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>SLACK</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--4"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Trello homepage" class="diamond__item" href="https://trello.com/b/TtCiFBcl/maintenance-applicative" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>TRELLO</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--5"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Wiki Homepage" class="diamond__item" href="" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>WIKI</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--7"></div>
+         </div>
+      </a>
+   </li>
+   <li>
+      <a title="Test Homepage" class="diamond__item" href="" target="_blank">
+         <div class="diamond__content">
+            <div class="content__info">
+               <p>EMPTY</p>
+            </div>
+            <div class="content__overlay"></div>
+            <div class="content__image content__image--8"></div>
+         </div>
+      </a>
+   </li>
+</ul>
+
+<ng-template #loading>
+   <app-loader></app-loader>
+ </ng-template>

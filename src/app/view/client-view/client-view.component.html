@@ -1,0 +1,63 @@
+<div *ngIf="singleIssue.length > 0 && multiIssueStatusPeriod.length > 0 else loading" class="container">
+    <div class="col">
+        <h4>
+            Nombre d'incidents
+        </h4>
+        <div class="fade_rule"></div>
+        <ngx-charts-bar-vertical
+            [view]="mobileQuery.matches ? viewMobile : view"
+            [scheme]="colorScheme"
+            [results]="singleIssue"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            style="padding: 20px;">
+        </ngx-charts-bar-vertical>
+    </div>
+    <div class="col">
+        <h4>
+            Classification des incidents en cours
+        </h4>
+        <div class="fade_rule"></div>
+        <ngx-charts-pie-chart
+            [view]="mobileQuery.matches ? viewMobile : view"
+            [scheme]="colorScheme"
+            [results]="singleIssue"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [legendPosition]="legendPosition"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+            style="padding: 20px;">
+        </ngx-charts-pie-chart>
+    </div>
+    <div class="col">
+        <h4>
+            Nombre d'incidents par période
+        </h4>
+        <div class="fade_rule"></div>
+        <ngx-charts-bar-vertical-2d
+            [view]="mobileQuery.matches ? viewMobile : view"
+            [scheme]="colorScheme"
+            [results]="multiIssueStatusPeriod"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [legendTitle]="legendTitle"
+            style="padding: 20px;">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loader></app-loader>
+</ng-template>

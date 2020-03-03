@@ -1,0 +1,23 @@
+<div class="containerNav">
+  <nav>
+    <input type="checkbox" id="nav" [(ngModel)]="toggleNavbar" class="hidden">
+    <label for="nav" class="nav-btn">
+      <i></i>
+      <i></i>
+      <i></i>
+    </label>
+    <div class="logo">
+      <a href="#" [routerLink]="'/home'" routerLinkActive #rla="routerLinkActive">TMA PORTAIL</a>
+    </div>
+    <div class="nav-wrapper">
+      <ul>
+        <li *ngFor="let link of routeLinks; let i = index">
+          <a href="#" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" (click)="toggleNavBar(i)"
+            [class.active]="link.active">
+            {{ link.title }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
