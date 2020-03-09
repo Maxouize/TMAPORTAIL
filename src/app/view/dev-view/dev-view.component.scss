@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+.chart-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.fade_rule {
+    height: 1px;
+    background-color: #E6E6E6;
+    width: 100%;
+    margin: 0 auto;
+    background-image: linear-gradient(#F4EEDD 2%, #E6E6E6 50%, #F4EEDD 98%);
+    background-image: -o-linear-gradient(left ,#F4EEDD 2%, #E6E6E6 50%, #F4EEDD 98%);
+    background-image: -moz-linear-gradient(left , #F4EEDD 2%, #E6E6E6 50%, #F4EEDD 98%);
+    background-image: -webkit-linear-gradient(left , #F4EEDD 2%, #E6E6E6 50%, #F4EEDD 98%);
+    background-image: -ms-linear-gradient(left , #F4EEDD 2%, #E6E6E6 50%, #F4EEDD 98%);
+    background-image: -webkit-gradient( linear, left bottom, right bottom, color-stop(0.02, #F4EEDD), color-stop(0.5, gray), color-stop(0.98, #F4EEDD) );
+    max-width: 700px;
+}
+
+.mat-icon {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 840px) {
+    .col {
+        width: -webkit-fill-available;
+    }
+}

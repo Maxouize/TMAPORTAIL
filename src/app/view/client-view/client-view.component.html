@@ -1,5 +1,5 @@
-<div *ngIf="singleIssue.length > 0 && multiIssueStatusPeriod.length > 0 else loading" class="container">
-    <div class="col">
+<div *ngIf="singleIssue.length > 0 || multiIssueStatusPeriod.length > 0 || singleIssueStatus.length > 0 else loading" class="container">
+    <div class="col" *ngIf="singleIssueStatus.length > 0">
         <h4>
             Nombre d'incidents
         </h4>
@@ -7,7 +7,7 @@
         <ngx-charts-bar-vertical
             [view]="mobileQuery.matches ? viewMobile : view"
             [scheme]="colorScheme"
-            [results]="singleIssue"
+            [results]="singleIssueStatus"
             [gradient]="gradient"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
@@ -19,7 +19,7 @@
             style="padding: 20px;">
         </ngx-charts-bar-vertical>
     </div>
-    <div class="col">
+    <div class="col" *ngIf="singleIssue.length > 0">
         <h4>
             Classification des incidents en cours
         </h4>
@@ -36,7 +36,7 @@
             style="padding: 20px;">
         </ngx-charts-pie-chart>
     </div>
-    <div class="col">
+    <div class="col" *ngIf="multiIssueStatusPeriod.length > 0">
         <h4>
             Nombre d'incidents par période
         </h4>

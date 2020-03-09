@@ -44,6 +44,8 @@ export class ClientViewComponent implements OnInit, OnDestroy {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.singleIssue = [];
+    this.singleIssueStatus = [];
+    this.multiIssueStatusPeriod = [];
    }
 
   ngOnInit() {

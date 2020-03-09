@@ -1,1 +1,61 @@
-<p>dev-view works!</p>
+<div *ngIf="dataSource.data.length > 0 else loading" class="container">
+    <div class="col" *ngIf="dataSource.data">
+        <h4>
+            Tâches assignées par utilisateur
+        </h4>
+        <div class="fade_rule"></div>
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding [@simpleFade]="node.level?1:0">
+              <button mat-icon-button disabled></button>
+              <mat-icon class="type-icon" [attr.aria-label]="node.type + 'icon'">
+                {{ node.type }}
+              </mat-icon>
+              <a [href]="node.link" target="_blank">{{node.name}} | {{ node.link }}</a>
+            </mat-tree-node>
+          
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding [@simpleFade]="node.level?1:0">
+              <button mat-icon-button matTreeNodeToggle
+                      [attr.aria-label]="'toggle ' + node.name">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <mat-icon class="type-icon" [attr.aria-label]="node.type + 'icon'">
+                {{ node.type }}
+              </mat-icon>
+              {{node.name}}
+            </mat-tree-node>
+        </mat-tree>
+    </div>
+    <div class="col" *ngIf="dataSource.data">
+        <h4>
+            Incidents triés par priorité
+        </h4>
+        <div class="fade_rule"></div>
+        <mat-tree [dataSource]="dataSourcePriority" [treeControl]="treeControlPriority">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding [@simpleFade]="node.level?1:0">
+              <button mat-icon-button disabled></button>
+              <mat-icon class="type-icon" [attr.aria-label]="node.type + 'icon'">
+                {{ node.type }}
+              </mat-icon>
+              <a [href]="node.link" target="_blank">{{node.name}} | {{ node.link }}</a>
+            </mat-tree-node>
+          
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding [@simpleFade]="node.level?1:0">
+                <button mat-icon-button matTreeNodeToggle
+                        [attr.aria-label]="'toggle ' + node.name">
+                <mat-icon class="mat-icon-rtl-mirror">
+                    {{treeControlPriority.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+                </button>
+                <mat-icon class="type-icon" [attr.aria-label]="node.type + 'icon'">
+                    {{ node.type }}
+                </mat-icon>
+                {{node.name}}
+            </mat-tree-node>
+        </mat-tree>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loader></app-loader>
+</ng-template>

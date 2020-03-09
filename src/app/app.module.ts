@@ -14,8 +14,12 @@ import { DevViewComponent } from './view/dev-view/dev-view.component';
 import { ManagerViewComponent } from './view/manager-view/manager-view.component';
 import { LoaderComponent } from './component/loader/loader.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthenticateInterceptor } from 'src/environments/app.interceptor';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatTreeModule } from '@angular/material/tree';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/Input';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatTreeModule,
+    CdkTreeModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [HttpClientModule,
     // {
