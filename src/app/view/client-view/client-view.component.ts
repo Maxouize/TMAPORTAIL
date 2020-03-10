@@ -61,8 +61,10 @@ export class ClientViewComponent implements OnInit, OnDestroy {
       let issuesGroupStatusPeriod = [];
       _.forEach(issues.issues, data => {
         const affectIssue = _.find(data.history, ['new_value.name', 'assigned']);
-        _.assign(affectIssue, {severity: data.severity});
-        issuesGroupStatusPeriod.push(affectIssue);
+        if (affectIssue) {
+          _.assign(affectIssue, {severity: data.severity});
+          issuesGroupStatusPeriod.push(affectIssue);
+        }
       });
 
       issuesGroupStatusPeriod = _.groupBy(issuesGroupStatusPeriod, 'created_at');

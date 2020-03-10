@@ -17,7 +17,7 @@ nav {
 
 .logo a {
     color: #000;
-    text-transform: uppercase;
+    text-transform: none;
     font-weight: 700;
     font-size: 18px;
     letter-spacing: 0px;
@@ -44,14 +44,13 @@ nav ul li:last-child {
 nav ul li a {
     display: inline-block;
     outline: none;
-    text-transform: uppercase;
+    text-transform: none;
     font-weight: 600;
     margin: 10px 15px 0;
     border-radius: 3px;
     color: #3C4858;
     padding-left: 10px;
     padding-right: 10px;
-    text-transform: capitalize;
     font-size: 14px;
     padding: 10px 15px;
 }
@@ -194,7 +193,6 @@ nav ul li a {
 .nav-wrapper li>a.active { // .sidebar[data-color=purple] li.active>a
     background-color: #3C4858;
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(60,72,88,.4);
-    text-transform: none;
     // background-color: #9c27b0;
     // box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
 }

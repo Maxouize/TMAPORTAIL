@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MantisService } from 'src/app/service/mantis.service';
 import * as _ from 'lodash';
-import { NestedTreeControl, FlatTreeControl } from '@angular/cdk/tree';
-import { ArrayDataSource } from '@angular/cdk/collections';
+import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { of as observableOf } from 'rxjs';
 import { TreeNode, FileNode } from 'src/app/model/TreeNode';
 import { trigger, transition, animate, style } from '@angular/animations';
 
+const iconByPriority = [ {priority: 'immediate', icon: 'warning'}
+  , {priority: 'urgent', icon: 'arrow_upward'}
+  , {priority: 'high', icon: 'expand_less'}
+  , {priority: 'normal', icon: 'remove'}
+  , {priority: 'low', icon: 'arrow_downward'}
+];
 @Component({
   selector: 'app-dev-view',
   templateUrl: './dev-view.component.html',
@@ -70,7 +75,7 @@ export class DevViewComponent implements OnInit {
         return [ issue.priority.id ];
       }, ['desc']), 'priority.name');
       Object.keys(priorityIssue).forEach((key, index) => {
-        const type = key === 'immediate' ? 'warning' : '';
+        const type = _.find(iconByPriority, { priority: key }).icon;
         this.nodeTreeIssuePriority.push({name: key, type, children: []});
         let libNode: string;
         let linkIssue: string;
@@ -82,8 +87,6 @@ export class DevViewComponent implements OnInit {
       });
       this.dataSource.data = this.nodeTreeIssue;
       this.dataSourcePriority.data = this.nodeTreeIssuePriority;
-      console.log(this.dataSource.data);
-      console.log(this.dataSourcePriority.data);
     });
   }
 
