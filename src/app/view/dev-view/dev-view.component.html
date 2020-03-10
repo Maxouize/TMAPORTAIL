@@ -12,7 +12,6 @@
               </mat-icon>
               <a [href]="node.link" target="_blank">{{node.name}} | {{ node.link }}</a>
             </mat-tree-node>
-          
             <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding [@simpleFade]="node.level?1:0">
               <button mat-icon-button matTreeNodeToggle
                       [attr.aria-label]="'toggle ' + node.name">

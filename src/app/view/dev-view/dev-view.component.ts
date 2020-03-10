@@ -7,11 +7,11 @@ import { of as observableOf } from 'rxjs';
 import { TreeNode, FileNode } from 'src/app/model/TreeNode';
 import { trigger, transition, animate, style } from '@angular/animations';
 
-const iconByPriority = [ {priority: 'immediate', icon: 'warning'}
-  , {priority: 'urgent', icon: 'arrow_upward'}
-  , {priority: 'high', icon: 'expand_less'}
-  , {priority: 'normal', icon: 'remove'}
-  , {priority: 'low', icon: 'arrow_downward'}
+const iconByPriority = [{ priority: 'immediate', icon: 'warning' }
+  , { priority: 'urgent', icon: 'arrow_upward' }
+  , { priority: 'high', icon: 'expand_less' }
+  , { priority: 'normal', icon: 'remove' }
+  , { priority: 'low', icon: 'arrow_downward' }
 ];
 @Component({
   selector: 'app-dev-view',
@@ -20,7 +20,7 @@ const iconByPriority = [ {priority: 'immediate', icon: 'warning'}
   animations: [
     trigger('simpleFade', [
       transition('*=>1', [
-        style({ opacity: 0}),
+        style({ opacity: 0 }),
         animate(550)
       ])])]
 })
@@ -61,46 +61,48 @@ export class DevViewComponent implements OnInit {
       const objectIssues = data as any;
       const groupByUser = _.groupBy(_.filter(objectIssues.issues, ['resolution.name', 'open']), 'handler.real_name');
       Object.keys(groupByUser).forEach((key, index) => {
-        this.nodeTreeIssue.push({name: key, type: 'person', children: []});
+        this.nodeTreeIssue.push({ name: key, type: 'person', children: [] });
         let libNode: string;
         let linkIssue: string;
         groupByUser[key].forEach(issue => {
           libNode = issue.id + '. ' + issue.severity.name + ' | ' + issue.summary;
           linkIssue = 'https://epsi-tma.mantishub.io/view.php?id='.concat(issue.id);
-          this.nodeTreeIssue[index].children.push({name: libNode, link: linkIssue, type: null});
+          this.nodeTreeIssue[index].children.push({ name: libNode, link: linkIssue, type: null });
         });
       });
 
       const priorityIssue = _.groupBy(_.orderBy(_.filter(objectIssues.issues, ['resolution.name', 'open']), issue => {
-        return [ issue.priority.id ];
+        return [issue.priority.id];
       }, ['desc']), 'priority.name');
       Object.keys(priorityIssue).forEach((key, index) => {
         const type = _.find(iconByPriority, { priority: key }).icon;
-        this.nodeTreeIssuePriority.push({name: key, type, children: []});
+        this.nodeTreeIssuePriority.push({ name: key, type, children: [] });
         let libNode: string;
         let linkIssue: string;
         priorityIssue[key].forEach(issue => {
           libNode = issue.id + '. ' + issue.severity.name + ' | ' + issue.summary;
           linkIssue = 'https://epsi-tma.mantishub.io/view.php?id='.concat(issue.id);
-          this.nodeTreeIssuePriority[index].children.push({name: libNode, link: linkIssue, type: null});
+          this.nodeTreeIssuePriority[index].children.push({ name: libNode, link: linkIssue, type: null });
         });
       });
       this.dataSource.data = this.nodeTreeIssue;
       this.dataSourcePriority.data = this.nodeTreeIssuePriority;
     });
+    console.log(this)
   }
+
 
   /** Transform the data to something the tree can read. */
   transformer(node: FileNode, level: number) {
     return {
       name: node.name,
-      type: node.type,
+      type: node.type, link: node.link,
       level: level,
       expandable: !!node.children
     };
   }
 
- /** Get the level of the node */
+  /** Get the level of the node */
   getLevel(node: TreeNode) {
     return node.level;
   }
@@ -116,7 +118,7 @@ export class DevViewComponent implements OnInit {
   }
 
   /** Get whether the node has children or not. */
-  hasChild(index: number, node: TreeNode){
+  hasChild(index: number, node: TreeNode) {
     return node.expandable;
   }
 
