@@ -59,7 +59,7 @@ export class DevViewComponent implements OnInit {
   ngOnInit() {
     this.mantisService.getAllIssue().subscribe(data => {
       const objectIssues = data as any;
-      const groupByUser = _.groupBy(_.filter(objectIssues.issues, ['resolution.name', 'open']), 'handler.real_name');
+      const groupByUser = _.groupBy(_.filter(objectIssues.issues, issue => issue.resolution.name === 'open' && _.has(issue, 'handler')), 'handler.real_name');
       Object.keys(groupByUser).forEach((key, index) => {
         this.nodeTreeIssue.push({ name: key, type: 'person', children: [] });
         let libNode: string;

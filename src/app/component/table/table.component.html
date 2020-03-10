@@ -1,0 +1,59 @@
+<div *ngIf=" dataSource?.filteredData.length " class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="idIssue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No.
+            </mat-header-cell>
+            <mat-cell *matCellDef="let issue">
+                {{issue.id}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- summary Column -->
+        <ng-container matColumnDef="summary">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Résumé</mat-header-cell>
+            <mat-cell *matCellDef="let issue"> {{issue.summary}} </mat-cell>
+        </ng-container>
+
+        <!-- severity Column -->
+        <ng-container matColumnDef="severity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Impact</mat-header-cell>
+            <mat-cell *matCellDef="let issue">
+                {{issue.severity.name}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- handler Column -->
+        <ng-container matColumnDef="handler">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Assigné à</mat-header-cell>
+            <mat-cell *matCellDef="let issue"> {{issue.handler?.name}} </mat-cell>
+        </ng-container>
+
+        <!-- villeArrivee Column -->
+        <ng-container matColumnDef="priority">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Priorité
+            </mat-header-cell>
+            <mat-cell *matCellDef="let issue">
+                {{issue.priority?.name}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- numberCom Column -->
+        <ng-container matColumnDef="project">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Projet
+            </mat-header-cell>
+            <mat-cell *matCellDef="let issue">
+                {{issue.project.name}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+</div>

@@ -1,1 +1,23 @@
-<p>manager-view works!</p>
+<div *ngIf="issueNotAffect.length > 0 else loading" class="container">
+    <div class="col" *ngIf="issueNotAffect">
+        <h4>
+            Incidents non affectés
+        </h4>
+        <div class="fade_rule"></div>
+        <app-table [displayedColumns]="displayedColumns"
+            [listData]="issueNotAffect" [title]="'Incidents non affectés'" [subTitle]="'Incidents non affectés'">
+        </app-table>
+    </div>
+    <div class="col" *ngIf="issueDelay">
+        <h4>
+            Incidents en retart
+        </h4>
+        <div class="fade_rule"></div>
+        <app-table [displayedColumns]="displayedColumnsDelay"
+            [listData]="issueDelay" [title]="'Incidents en retart'" [subTitle]="'Incidents en retart'">
+        </app-table>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loader></app-loader>
+</ng-template>

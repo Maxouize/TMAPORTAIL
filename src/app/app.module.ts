@@ -20,6 +20,12 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/Input';
+import {MatTableModule} from '@angular/material/Table';
+import {MatTooltipModule} from '@angular/material/Tooltip';
+import { MatPaginatorModule } from '@angular/material';
+import {MatSortModule} from '@angular/material/Sort';
+
+import { TableComponent } from './component/table/table.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import {MatInputModule} from '@angular/material/Input';
     ClientViewComponent,
     DevViewComponent,
     ManagerViewComponent,
-    LoaderComponent
+    LoaderComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,11 @@ import {MatInputModule} from '@angular/material/Input';
     CdkTreeModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [HttpClientModule,
     // {
